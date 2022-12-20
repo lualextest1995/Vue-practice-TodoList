@@ -26,7 +26,9 @@ export default {
     const todoList = ref([]);
     //初始化載入 localStorage 的 Data
     onMounted(() => {
-      todoList.value = JSON.parse(localStorage.getItem("data"));
+      if (localStorage.getItem("data")) {
+        todoList.value = JSON.parse(localStorage.getItem("data"));
+      }
     });
     //監控data改變時，更新 localStorage 裡的 Data
     watch(
